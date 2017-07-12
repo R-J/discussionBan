@@ -1,24 +1,16 @@
 <?php
-/**
- * An example plugin.
- *
- * @copyright 2008-2014 Vanilla Forums, Inc.
- * @license GNU GPLv2
- */
-
 // Define the plugin:
 $PluginInfo['discussionBan'] = array(
+    'Name' => 'Discussion Ban',
     'Description' => 'Grants moderators or permissioned users ability to ban users from specific discussions',
     'Version' => '1.1',
-    'RequiredApplications' => array('Vanilla' => '2.1'),
+    'RequiredApplications' => array('Vanilla' => '>=2.3'),
     'RequiredTheme' => false,
     'RequiredPlugins' => false,
-    'HasLocale' => false,
+    'HasLocale' => true,
     'License' => 'GNU GPL2',
-    'SettingsUrl' => '/plugin/example',
-    'SettingsPermission' => 'Garden.Settings.Manage',
     'Author' => "Mike Olson",
-    'AuthorUrl' => 'http://www.vanillaforums.com'
+    'AuthorUrl' => 'https://open.vanillaforums.com/profile/MikeOlson'
 );
 
 /**
@@ -49,7 +41,7 @@ class DiscussionBanPlugin extends Gdn_Plugin {
         }
     }
 
-    public function pluginConttroller_discussionBan_create($sender) {
+    public function pluginController_discussionBan_create($sender) {
         $sender->render('discussionban', '', 'plugins/discussionBan');
     }
 }
