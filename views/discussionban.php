@@ -23,3 +23,36 @@
     echo $this->Form->close('Ban Users');
     ?>
 </div>
+<script>
+jQuery(document).ready(function($) {
+   $.fn.userTokenInput = function() {
+      $(this).each(function() {
+         /// Author tag token input.
+           var $author = $(this);
+
+           var author = $author.val();
+           if (author && author.length) {
+               author = author.split(",");
+               for (i = 0; i < author.length; i++) {
+                   author[i] = { id: i, name: author[i] };
+               }
+           } else {
+               author = [];
+           }
+
+           $author.tokenInput(gdn.url('/user/tagsearch'), {
+               hintText: gdn.definition("TagHint", "Start to type..."),
+               tokenValue: 'name',
+               searchingText: '', // search text gives flickery ux, don't like
+               searchDelay: 300,
+               minChars: 1,
+               zindex: 9999,
+               prePopulate: author,
+               animateDropdown: false
+           });
+      });
+   };
+
+   $('.MultiComplete').userTokenInput();
+});
+</script>

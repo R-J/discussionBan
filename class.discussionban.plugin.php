@@ -69,7 +69,6 @@ class DiscussionBanPlugin extends Gdn_Plugin {
             die;
         } else {
             // This will be run when the view is opened
-
         }
         $sender->render('discussionban', '', 'plugins/discussionBan');
     }
