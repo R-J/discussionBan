@@ -41,7 +41,14 @@ class DiscussionBanPlugin extends Gdn_Plugin {
         }
     }
 
+    public function base_render_before($sender) {
+        $sender->addJsFile('jquery.autocomplete.js');
+    }
+
     public function pluginController_discussionBan_create($sender) {
+        $sender->Form = new Gdn_Form();
+        $sender->setData('Title', 'Ban Users From This Discussion');
+
         $sender->render('discussionban', '', 'plugins/discussionBan');
     }
 }
