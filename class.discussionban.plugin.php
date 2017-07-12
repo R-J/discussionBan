@@ -50,6 +50,6 @@ class DiscussionBanPlugin extends Gdn_Plugin {
     }
 
     public function pluginConttroller_discussionBan_create($sender) {
-        $sender->render('discussionBan', '', 'plugins/discussionBan');
+        $sender->render('discussionban', '', 'plugins/discussionBan');
     }
 }
