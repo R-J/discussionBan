@@ -9,9 +9,9 @@
     <ul>
         <li>
             <?php
-            echo $this->Form->label('Ban User', 'BanUser');
+            echo $this->Form->label('Users to ban', 'UserNames');
             echo wrap(
-                $this->Form->textBox('BanUser', array('class' => 'InputBox MultiComplete')),
+                $this->Form->textBox('UserNames', array('class' => 'InputBox MultiComplete')),
                 'div',
                 array('class' => 'TextBoxWrapper')
             );
