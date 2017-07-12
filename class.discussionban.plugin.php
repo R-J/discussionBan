@@ -41,14 +41,36 @@ class DiscussionBanPlugin extends Gdn_Plugin {
         }
     }
 
+    /**
+     * Add autocomplete.js to every page.
+     *
+     * @param GardenController $sender Instance of the calling class.
+     *
+     * @return void.
+     */
     public function base_render_before($sender) {
-        $sender->addJsFile('jquery.autocomplete.js');
+        $sender->addJsFile('jquery.tokeninput.js');
     }
 
+    /**
+     * Show ban user form and save results to discussion attributes.
+     *
+     * @param PluginController $sender Instance of the calling class
+     *
+     * @return void.
+     */
     public function pluginController_discussionBan_create($sender) {
         $sender->Form = new Gdn_Form();
-        $sender->setData('Title', 'Ban Users From This Discussion');
+        $sender->setData('Title', t('Ban Users From This Discussion'));
 
+        if ($sender->Form->authenticatedPostBack()) {
+            // This will only be run when the user pressed the button.
+            decho($sender->Form->formValues(), 'debug', true);
+            die;
+        } else {
+            // This will be run when the view is opened
+
+        }
         $sender->render('discussionban', '', 'plugins/discussionBan');
     }
 }
