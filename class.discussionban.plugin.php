@@ -28,7 +28,7 @@ class DiscussionBanPlugin extends Gdn_Plugin {
         if (isset($args['DiscussionOptions'])) {
             $args['DiscussionOptions']['discussionBan'] = array(
                 'Label' => t('Ban Users From This Discussion'),
-                'Url' => 'vanilla/discussionban/'.$args['Discussion']->DiscussionID,
+                'Url' => url('vanilla/discussionban/'.$args['Discussion']->DiscussionID),
                 'Class' => 'Popup'
             );
         }
