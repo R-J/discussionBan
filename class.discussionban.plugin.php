@@ -56,12 +56,12 @@ class DiscussionBanPlugin extends Gdn_Plugin {
         $sender->Form = new Gdn_Form();
         $sender->setData('Title', t('Ban Users From This Discussion'));
 
-        if ($sender->Form->authenticatedPostBack()) {
-            // This will only be run when the user pressed the button.
-            $sender->informMessage(t("Your changes have been saved."));
-        } else {
+        if ($sender->Form->authenticatedPostBack() == false) {
             // This will be run when the view is opened
-            $sender->Form->setValue('UserNames', 'HelloWorld');
+            $sender->Form->setValue('UserNames', 'Hello World');
+        } else {
+            // This will only be run when the user pressed the button.
+            $sender->informMessage(t('Your changes have been saved.'));
         }
         $sender->render('discussionban', '', 'plugins/discussionBan');
     }
