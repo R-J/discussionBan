@@ -28,7 +28,7 @@ class DiscussionBanPlugin extends Gdn_Plugin {
         if (isset($args['DiscussionOptions'])) {
             $args['DiscussionOptions']['discussionBan'] = array(
                 'Label' => t('Ban Users From This Discussion'),
-                'Url' => 'discussion/ban/'.$args['Discussion']->DiscussionID,
+                'Url' => 'vanilla/discussionban/'.$args['Discussion']->DiscussionID,
                 'Class' => 'Popup'
             );
         }
@@ -52,16 +52,16 @@ class DiscussionBanPlugin extends Gdn_Plugin {
      *
      * @return void.
      */
-    public function discussionController_ban_create($sender) {
+    public function vanillaController_discussionBan_create($sender) {
         $sender->Form = new Gdn_Form();
         $sender->setData('Title', t('Ban Users From This Discussion'));
 
         if ($sender->Form->authenticatedPostBack()) {
             // This will only be run when the user pressed the button.
-            decho($sender->Form->formValues(), 'debug', true);
-            die;
+            $sender->informMessage(t("Your changes have been saved."));
         } else {
             // This will be run when the view is opened
+            $sender->Form->setValue('UserNames', 'HelloWorld');
         }
         $sender->render('discussionban', '', 'plugins/discussionBan');
     }
