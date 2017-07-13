@@ -28,16 +28,9 @@ class DiscussionBanPlugin extends Gdn_Plugin {
         if (isset($args['DiscussionOptions'])) {
             $args['DiscussionOptions']['discussionBan'] = array(
                 'Label' => t('Ban Users From This Discussion'),
-                'Url' => '/vanilla/discussionBan/'.$args['Discussion']->DiscussionID,
+                'Url' => 'discussion/ban/'.$args['Discussion']->DiscussionID,
                 'Class' => 'Popup'
             );
-            /*
-            $args['DiscussionOptions']['discussionBan'] = [
-                'Label' => t('Ban User from Discussion'),
-                'Url' => '/plugin/discussionBan/'.$args['Discussion']->DiscussionID,
-                'Class' => 'Popup'
-            ];
-            */
         }
     }
 
@@ -59,7 +52,7 @@ class DiscussionBanPlugin extends Gdn_Plugin {
      *
      * @return void.
      */
-    public function vanillaController_discussionBan_create($sender) {
+    public function discussionController_ban_create($sender) {
         $sender->Form = new Gdn_Form();
         $sender->setData('Title', t('Ban Users From This Discussion'));
 
